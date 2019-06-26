@@ -10,6 +10,7 @@ import {
   PATH_DETAIL_PARAM,
   PATH_HOME
 } from "./app.routes.constantes";
+import {LoggedInService} from "./services/logged-in.service";
 
 export const ROUTES: Routes = [
   {
@@ -22,7 +23,7 @@ export const ROUTES: Routes = [
     children: [
         { path: '', pathMatch: 'full', redirectTo: PATH_DETAIL_FORMATIONS },
         { path: PATH_DETAIL_FORMATIONS, component: FormationsComponent },
-        { path: PATH_DETAIL_CONNAISSANCES, component: ConnaissancesComponent },
+        { path: PATH_DETAIL_CONNAISSANCES, component: ConnaissancesComponent, canActivate: [LoggedInService] },
       ]
   },
 ];
