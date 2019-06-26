@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private router:Router) { }
 
   navigateToDetail(){
-    this.router.navigate([PATH_DETAIL])
+    this.router.navigate([PATH_DETAIL,0])
       .then( () => console.log('to detail'))
       .catch( () => console.log('error to detail'));
   }

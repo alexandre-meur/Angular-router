@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {PATH_HOME} from "../app.routes.constantes";
+import {PATH_DETAIL, PATH_HOME} from "../app.routes.constantes";
 import {map} from "rxjs/operators";
 
 @Component({
@@ -19,7 +19,13 @@ export class DetailComponent implements OnInit {
   navigateToHome(){
     this.router.navigate([PATH_HOME])
       .then( () => console.log('to home'))
-      .catch( () => console.log('error to home'));
+      .catch( e => console.log('error to home :',e));
+  }
+
+  navigateToDetail2() {
+    this.router.navigate([PATH_DETAIL ,2])
+      .then( () => console.log('to detail/2'))
+      .catch( e => console.log('error to detail/2 : ',e));
   }
 
   ngOnInit() {
