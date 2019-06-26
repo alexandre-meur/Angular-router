@@ -7,12 +7,14 @@
 <div class="nav">
   <ul>
     <li>
-      <a href="" routerLink="/" routerLinkActive="nav__item__selected">
+      <a href="" [routerLink]="['/']"
+         routerLinkActive="nav__item__selected"
+         [routerLinkActiveOptions]="{ exact: true }">
         Home
       </a>
     </li>
     <li>
-      <a href="" routerLink="/detail" routerLinkActive="nav__item__selected">
+      <a href="" [routerLink]="['/detail', idDetail]" routerLinkActive="nav__item__selected">
         Detail
       </a>
     </li>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PATH_HOME} from "../app.routes.constantes";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-detail',
@@ -9,7 +10,11 @@ import {PATH_HOME} from "../app.routes.constantes";
 })
 export class DetailComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  currentId:number = 0;
+
+  constructor(private router:Router,
+              private route: ActivatedRoute
+              ) { }
 
   navigateToHome(){
     this.router.navigate([PATH_HOME])
@@ -18,6 +23,13 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.paramMap
+      .pipe(
+        map( params => Number.parseInt(params.get('idDetail')))
+      )
+      .subscribe( id => {
+        console.log(id);
+        this.currentId = id;
+      });
   }
-
 }
