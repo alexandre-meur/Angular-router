@@ -11,6 +11,7 @@ import {
   PATH_HOME
 } from "./app.routes.constantes";
 import {LoggedInService} from "./services/logged-in.service";
+import {FormationResolvers} from "./resolvers/formation-resolvers";
 
 export const ROUTES: Routes = [
   {
@@ -22,8 +23,14 @@ export const ROUTES: Routes = [
     component: DetailComponent,
     children: [
         { path: '', pathMatch: 'full', redirectTo: PATH_DETAIL_FORMATIONS },
-        { path: PATH_DETAIL_FORMATIONS, component: FormationsComponent },
-        { path: PATH_DETAIL_CONNAISSANCES, component: ConnaissancesComponent, canActivate: [LoggedInService] },
+        { path: PATH_DETAIL_FORMATIONS,
+          component: FormationsComponent,
+          resolve:{
+            formations: FormationResolvers
+          }},
+        { path: PATH_DETAIL_CONNAISSANCES,
+          component: ConnaissancesComponent,
+          canActivate: [LoggedInService] },
       ]
   },
 ];
